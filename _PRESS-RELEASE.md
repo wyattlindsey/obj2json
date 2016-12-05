@@ -16,29 +16,28 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
  
-## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
+## OBJ to JSON geometry converter ##
 
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
+  Zippy cloud-based .OBJ conversion utility for three.js users 
 
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
+  3D artists and developers have been using the Wavefront OBJ format for many years.  These days, Three.js brings 3D to your browser.  Use **OBJ to JSON geometry converter** to convert those old OBJ files into Three's latest proprietary JSON Geometry format.
 
 ## Problem ##
-  > Describe the problem your product solves.
+  The web needs a standardized 3D object format.  3D developers and artists have been using many ancient, difficult-to-read, esoteric and confusing file formats.  These make sense for pre-internet desktop applications, but what about the new JavaScript systems that use WebGL?
 
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
+  What better structure than JSON for JavaScript applications?  **OBJ to JSON geometry converter** allows you to work with a familiar, readable and native file format.  These models will allow Three.js to leverage current and future enhancements related to loading, reading and transmitting JSON-encoded data.
 
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
+  "Future-proof your 3D objects quickly and look cool while doing it."
 
 ## How to Get Started ##
-  > Describe how easy it is to get started.
+  Simply drag and drop your OBJ file onto the *convert OBJ file to JSON* box at obj2json.digitalocean.com.
 
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
+  "Never again will I have to deal with clunky .OBJ files again.  Are those things from the 70s or what?"
 
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
+  Bring all your 3D models into the 21st century quickly and easily.
