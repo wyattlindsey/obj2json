@@ -1,40 +1,31 @@
 'use strict';
 
 const express = require('express');
-const multer = require('multer');
+const fileUpload = require('express-fileupload');
 const path = require('path');
+const upload = require('./controllers/upload');
 const database = require('./controllers/database');
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
-const upload = multer({
-  dest: '/server/uploads'
-});
+app.post('/upload', fileUpload(), (req, res) => {
+  if (!req.files) {
+    res.send('No files were uploaded');
+    return;
+  }
 
-app.post('/upload', (req, res) => {
-  req.on('data', (chunk) => {
-    console.log(chunk);
+  req.files.file.mv(`server/uploads/originals/AS12_1.obj`, (err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send(err);
+    } else {
+      res.sendStatus(201);
+    }
+
+
   });
-  // let data = '';
-  //
-  // req.on('data', (chunk) => {
-  //   data += chunk.toString();
-  // });
-  //
-  // req.on('end', (data) => {
-  //   console.log(data);
-  //   res.sendStatus(201);
-  // });
-  // upload(req)
-  //   .then(() => {
-  //     res.send(201);
-  //   })
-  //   .catch((err) => {
-  //     console.error(`upload error: ${err}`);
-  //     res.send(422);
-  //   });
 });
 
 
