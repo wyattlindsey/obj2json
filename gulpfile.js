@@ -7,6 +7,7 @@ var streamify = require('gulp-streamify');
 var babel = require('babel-core/register');
 var babelify = require('babelify');
 var source = require('vinyl-source-stream');
+var rename = require('gulp-rename');
 var browserSync = require('browser-sync').create();
 
 gulp.task('default', function() {
@@ -37,7 +38,7 @@ var runBrowserifyTask = function(options) {
     packageCache: {},
     fullPaths: true
   })
-    .require(require.resolve('./client/app/app.js'), {entry: true} )
+    .require(require.resolve('./client/app/app.js'), { entry: true } )
     .transform('babelify', { presets: ['es2015', 'react'] })
     .external([
       'react',
@@ -62,6 +63,8 @@ var runBrowserifyTask = function(options) {
   vendorBundler.bundle()
     .pipe(source('vendors.js'))
     .pipe(gulp.dest(options.dest));
+
+  return rebundle();
 };
 
 gulp.task('sass', function() {
