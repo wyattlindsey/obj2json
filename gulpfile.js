@@ -14,14 +14,14 @@ var concat = require('gulp-concat');
 gulp.task('default', function() {
   runBrowserifyTask({
     watch: true,
-    dest: './dist',
+    dest: './server/dist',
     uglify: false
   });
 
   gulp.start('sass', 'copy', 'browser-sync');
   gulp.watch('./dist/*.js', browserSync.reload());
-  gulp.watch('./client/app/**/*.scss', ['sass']);
-  gulp.watch('./dist/*.css', browserSync.reload());
+  gulp.watch('./server/client/app/**/*.scss', ['sass']);
+  gulp.watch('./server/dist/*.css', browserSync.reload());
 });
 
 var runBrowserifyTask = function(options) {
@@ -52,7 +52,6 @@ var runBrowserifyTask = function(options) {
         console.log(err)
       })
       .pipe(source('bundle.js'))
-      //.pipe(gulpif(options.uglify, streamify(uglify())))
       .pipe(rename('app.js'))
       .pipe(gulp.dest(options.dest));
   }
@@ -67,7 +66,6 @@ var runBrowserifyTask = function(options) {
 
   vendorBundler.bundle()
     .pipe(source('vendors.js'))
-    //.pipe(streamify((uglify())))
     .pipe(gulp.dest(options.dest));
 
   return rebundle();
@@ -77,18 +75,18 @@ gulp.task('sass', function() {
   gulp.src('./client/app/**/*.scss')
     .pipe(concat('styles.scss'))
     .pipe(sass().on('error', sass.logError))
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./server/dist'));
 });
 
 gulp.task('copy', function() {
   gulp.src('./client/index.html')
-    .pipe(gulp.dest('./dist'));
+    .pipe(gulp.dest('./server/dist'));
 });
 
 gulp.task('browser-sync', function() {
   browserSync.init({
     server: {
-      baseDir: './dist'
+      baseDir: './server/dist'
     }
   });
 });

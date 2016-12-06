@@ -22,7 +22,8 @@
     "react-dom": "^15.4.1",
     "react-dropzone": "^3.7.3",
     "react-dropzone-component": "^1.2.1",
-    "superagent": "^3.1.0"
+    "superagent": "^3.1.0",
+    "three-obj": "^0.6.5"
   },
   "devDependencies": {
     "babel-core": "^6.18.2",
