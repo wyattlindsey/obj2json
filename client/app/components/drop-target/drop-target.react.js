@@ -1,5 +1,6 @@
 const React = require('react');
-var Dropzone = require('react-dropzone');
+const Dropzone = require('react-dropzone');
+const upload = require('../../controllers/upload');
 
 export default class DropTarget extends React.Component {
   constructor(props) {
@@ -8,8 +9,13 @@ export default class DropTarget extends React.Component {
 
   onDrop(acceptedFiles, rejectedFiles) {
     // todo display error for rejected files
-
-    console.log('dropping');
+    upload.uploadOBJ(acceptedFiles)
+      .then((results) => {   // not sure about those params
+        console.log('uploaded OBJ');
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
 
   render() {
