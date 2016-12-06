@@ -1,18 +1,24 @@
 const request = require('superagent');
+const path = require('path');
 
-module.exports = {
-  uploadOBJ: function(files) {
-    return new Promise((resolve, reject) => {
-      let req = request.post('/upload');
+module.exports = (files) => {
+  let file = files[0];
 
-      files.forEach((file) => {
-        // todo verify that file is a .OBJ
-        req.attach(file.name, file);
-      });
-      req.end((err, data) => {
-        if (err) { reject(err); }
-        resolve(data);
-      });
+  request
+    .post('/upload')
+    .field('file', file)
+    .end((err, data) => {
+      if (err) { console.error(err); }
+      console.log(data);
     });
-  }
-}
+
+  // return new Promise((resolve, reject) => {
+  //   request
+  //     .post('/upload')
+  //     .field('file', file)
+  //     .end((err, data) => {
+  //       console.log(data);
+  //     });
+  // });
+
+};

@@ -9,13 +9,13 @@ export default class DropTarget extends React.Component {
 
   onDrop(acceptedFiles, rejectedFiles) {
     // todo display error for rejected files
-    upload.uploadOBJ(acceptedFiles)
-      .then((results) => {   // not sure about those params
-        console.log('uploaded OBJ');
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    upload(acceptedFiles);
+      // .then((results) => {   // not sure about those params
+      //   console.log('uploaded OBJ');
+      // })
+      // .catch((err) => {
+      //   console.error(err);
+      // });
   }
 
   render() {
