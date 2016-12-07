@@ -3,12 +3,13 @@
 const express = require('express');
 const fileUpload = require('express-fileupload');
 const path = require('path');
+const index = require('./controllers/index');
 const upload = require('./controllers/upload');
 const database = require('./controllers/database');
 const convertObj = require('./controllers/convert-obj');
 const saveJSON3dObject = require('./controllers/saveJSON3dObject');
 const app = express();
-const config = require('./config')();
+const config = require('./config');
 const port = process.env.PORT || 3000;
 
 app.use(express.static(path.join(__dirname, '../dist')));
@@ -25,6 +26,17 @@ app.post('/upload', fileUpload(), (req, res) => {
     })
     .then((data) => {
       return saveJSON3dObject(data, thisID);
+    });
+});
+
+app.get('/files', (req, res) => {
+  index()
+    .then((err, data) => {
+      if (err) {
+        res.sendStatus(404)
+      } else {
+        res.send(data);
+      }
     });
 });
 
