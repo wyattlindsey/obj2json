@@ -19,14 +19,11 @@
   "dependencies": {
     "express": "^4.14.0",
     "express-fileupload": "0.0.5",
-    "jquery": "^3.1.1",
     "mongoose": "^4.7.1",
-    "multer": "^1.2.0",
     "node-uuid": "^1.4.7",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-dropzone": "^3.7.3",
-    "react-dropzone-component": "^1.2.1",
     "superagent": "^3.1.0",
     "three-obj": "^0.6.5"
   },

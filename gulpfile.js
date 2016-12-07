@@ -30,7 +30,10 @@ var runBrowserifyTask = function(options) {
   })
     .require([
       'react',
-      'react-dom'
+      'react-dom',
+      'three-obj',
+      'superagent',
+      'react-dropzone'
     ]);
 
   var bundler = browserify({
@@ -43,7 +46,10 @@ var runBrowserifyTask = function(options) {
     .transform('babelify', { presets: ['es2015', 'react'] })
     .external([
       'react',
-      'react-dom'
+      'react-dom',
+      'three-obj',
+      'superagent',
+      'react-dropzone'
     ]);
 
   var rebundle = function() {
