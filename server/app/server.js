@@ -6,6 +6,7 @@ const path = require('path');
 const upload = require('./controllers/upload');
 const database = require('./controllers/database');
 const convertObj = require('./controllers/convert-obj');
+const saveJSON3dObject = require('./controllers/saveJSON3dObject');
 const app = express();
 const config = require('./config')();
 const port = process.env.PORT || 3000;
@@ -13,12 +14,17 @@ const port = process.env.PORT || 3000;
 app.use(express.static(path.join(__dirname, '../dist')));
 
 app.post('/upload', fileUpload(), (req, res) => {
+  var thisID;
   upload(req, res)
-    .then((fileGUID) => {
-      database.save(fileGUID);
+    .then((id) => {
+      return database.save(id);
     })
-    .then((fileGUID) => {
-      convertObj(fileGUID);
+    .then((id) => {
+      thisID = id;
+      return convertObj(`server/uploads/originals/${id}.obj`);
+    })
+    .then((data) => {
+      return saveJSON3dObject(data, thisID);
     });
 });
 
